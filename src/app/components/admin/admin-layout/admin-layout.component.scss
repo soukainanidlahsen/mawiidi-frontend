@@ -1,0 +1,90 @@
+// Variables - Admin theme (purple)
+$primary-color: #7c3aed;
+$primary-dark: #6d28d9;
+$secondary-color: #a78bfa;
+$accent-color: #f3f0ff;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+$font-family: 'Inter', sans-serif;
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: $background-color;
+    font-family: $font-family;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: $white;
+    border-right: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.03);
+
+    .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 2.5rem;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: $primary-dark;
+
+        .logo {
+            height: 36px;
+        }
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.85rem 1rem;
+            text-decoration: none;
+            color: $light-text;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 0.95rem;
+
+            svg {
+                flex-shrink: 0;
+                transition: all 0.3s;
+            }
+
+            &:hover {
+                background-color: $accent-color;
+                color: $primary-dark;
+
+                svg {
+                    color: $primary-color;
+                }
+            }
+
+            &.active {
+                background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+                color: $white;
+                box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+
+                svg {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}

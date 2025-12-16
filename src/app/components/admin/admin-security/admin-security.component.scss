@@ -1,0 +1,160 @@
+$primary-color: #7c3aed;
+$primary-dark: #6d28d9;
+$accent-color: #f3f0ff;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+
+.security-page {
+    font-family: 'Inter', sans-serif;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+
+    h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $text-color;
+        margin: 0 0 0.25rem 0;
+    }
+
+    p {
+        color: $light-text;
+        margin: 0;
+    }
+}
+
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+
+    button {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        background: $white;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        color: $light-text;
+
+        &.active {
+            background: $primary-color;
+            color: $white;
+        }
+
+        &:hover:not(.active) {
+            background: $accent-color;
+            color: $primary-dark;
+        }
+    }
+}
+
+.data-table {
+    background: $white;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    th {
+        font-weight: 600;
+        color: $light-text;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+
+    td {
+        color: $text-color;
+    }
+
+    tbody tr:hover {
+        background: $accent-color;
+    }
+
+    code {
+        background: $background-color;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+    }
+
+    .status-badge {
+        padding: 0.35rem 0.85rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: capitalize;
+
+        &.status-success {
+            background: rgba(#20c997, 0.15);
+            color: darken(#20c997, 10%);
+        }
+
+        &.status-failed {
+            background: rgba(#dc3545, 0.15);
+            color: darken(#dc3545, 10%);
+        }
+    }
+}
+
+.gdpr-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.compliance-card {
+    background: $white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+    h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0 0 1rem;
+        color: $text-color;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    li {
+        padding: 0.5rem 0;
+        color: $text-color;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .stat-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #f0f0f0;
+
+        span {
+            color: $light-text;
+        }
+
+        strong {
+            color: $text-color;
+        }
+    }
+}

@@ -1,0 +1,59 @@
+<div class="planning-page">
+    <header class="page-header">
+        <div class="header-content">
+            <h1>My Planning</h1>
+            <p>Manage your weekly schedule and appointments</p>
+        </div>
+        <button class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14" />
+            </svg>
+            Request Schedule Change
+        </button>
+    </header>
+
+    <!-- Week View -->
+    <div class="week-navigation">
+        <div class="week-days">
+            <div class="day-card" *ngFor="let day of currentWeek" [class.selected]="isSelectedDate(day)"
+                [class.today]="isToday(day)" (click)="selectDate(day)">
+                <span class="day-name">{{ day | date:'EEE' }}</span>
+                <span class="day-number">{{ day | date:'d' }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Selected Day Schedule -->
+    <div class="schedule-container">
+        <div class="schedule-header">
+            <h2>{{ selectedDate | date:'fullDate' }}</h2>
+        </div>
+        <div class="time-slots">
+            <div class="slot" *ngFor="let slot of getSlots(selectedDate)" [ngClass]="getSlotClass(slot)">
+                <div class="slot-time">{{ slot.time }}</div>
+                <div class="slot-content">
+                    <ng-container *ngIf="slot.status === 'booked'">
+                        <span class="patient-name">{{ slot.patient }}</span>
+                        <span class="appointment-type">{{ slot.type }}</span>
+                    </ng-container>
+                    <ng-container *ngIf="slot.status === 'available'">
+                        <span class="available-text">Available</span>
+                    </ng-container>
+                    <ng-container *ngIf="slot.status === 'blocked'">
+                        <span class="blocked-text">Blocked</span>
+                    </ng-container>
+                </div>
+                <div class="slot-actions" *ngIf="slot.status === 'booked'">
+                    <button class="btn-icon" title="View Details">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

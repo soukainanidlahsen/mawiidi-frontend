@@ -1,0 +1,56 @@
+<div class="complaints-page">
+    <header class="page-header">
+        <div class="header-content">
+            <h1>Complaints Management</h1>
+            <p>{{ openCount }} open complaints</p>
+        </div>
+    </header>
+
+    <!-- Filters -->
+    <div class="filters">
+        <select [(ngModel)]="filterStatus">
+            <option value="">All Status</option>
+            <option value="open">Open</option>
+            <option value="in-progress">In Progress</option>
+            <option value="closed">Closed</option>
+        </select>
+        <select [(ngModel)]="filterDoctor">
+            <option value="">All Doctors</option>
+            <option value="tazi">Dr. Ahmed Tazi</option>
+            <option value="idrissi">Dr. Sara Idrissi</option>
+        </select>
+    </div>
+
+    <!-- Complaints Table -->
+    <div class="data-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let complaint of complaints">
+                    <td>{{ complaint.id }}</td>
+                    <td>{{ complaint.patientName }}</td>
+                    <td>{{ complaint.doctorName }}</td>
+                    <td>{{ complaint.subject }}</td>
+                    <td>{{ complaint.date | date:'mediumDate' }}</td>
+                    <td><span class="status-badge" [ngClass]="getStatusClass(complaint.status)">{{ complaint.status
+                            }}</span></td>
+                    <td class="actions">
+                        <button class="btn-icon" title="View">👁️</button>
+                        <button class="btn-icon" title="Reply">💬</button>
+                        <button class="btn-icon" title="Close" *ngIf="complaint.status !== 'closed'">✅</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

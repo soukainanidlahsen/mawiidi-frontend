@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { PatientService, Patient, Appointment } from '../../../services/patient/patient.service';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
+import { TranslationService } from '../../../services/i18n/translation.service';
 
 @Component({
   selector: 'app-patient-dashboard',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslatePipe],
   templateUrl: './patient-dashboard.component.html',
   styleUrl: './patient-dashboard.component.scss'
 })

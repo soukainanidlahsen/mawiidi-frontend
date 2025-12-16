@@ -1,0 +1,356 @@
+$primary-color: #0c8599;
+$primary-dark: #0b7285;
+$secondary-color: #20c997;
+$accent-color: #e3fafc;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+
+.consultations-page {
+    font-family: 'Inter', sans-serif;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .header-content {
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: $text-color;
+            margin: 0 0 0.25rem 0;
+        }
+
+        p {
+            color: $light-text;
+            margin: 0;
+        }
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &.btn-primary {
+            background: linear-gradient(135deg, $primary-color, $primary-dark);
+            color: $white;
+            box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+
+            &:hover {
+                transform: translateY(-2px);
+            }
+        }
+    }
+}
+
+.consultations-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1.5rem;
+}
+
+.consultation-card {
+    background: $white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+
+        .patient-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            .avatar {
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, $primary-color, $primary-dark);
+                color: $white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+            }
+
+            .details {
+                display: flex;
+                flex-direction: column;
+
+                .name {
+                    font-weight: 600;
+                    color: $text-color;
+                }
+
+                .date {
+                    font-size: 0.85rem;
+                    color: $light-text;
+                }
+            }
+        }
+
+        .status-badge {
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+
+            &.status-completed {
+                background: rgba($secondary-color, 0.15);
+                color: darken($secondary-color, 10%);
+            }
+
+            &.status-pending-report {
+                background: rgba(#f59f00, 0.15);
+                color: darken(#f59f00, 10%);
+            }
+
+            &.status-in-progress {
+                background: rgba($primary-color, 0.15);
+                color: $primary-dark;
+            }
+        }
+    }
+
+    .card-body {
+        margin-bottom: 1rem;
+
+        .info-row {
+            display: flex;
+            margin-bottom: 0.5rem;
+
+            label {
+                min-width: 100px;
+                color: $light-text;
+                font-size: 0.9rem;
+            }
+
+            span {
+                color: $text-color;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .card-actions {
+        display: flex;
+        gap: 0.75rem;
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: transparent;
+            border: 1px solid #e0e0e0;
+            color: $text-color;
+
+            &:hover {
+                background: $accent-color;
+                border-color: $primary-color;
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+// Modal Styles
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal {
+    background: $white;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 550px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $text-color;
+        margin: 0;
+    }
+
+    .close-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: $light-text;
+        padding: 0.5rem;
+        border-radius: 8px;
+        transition: all 0.3s;
+
+        &:hover {
+            background: $background-color;
+            color: $text-color;
+        }
+    }
+}
+
+.modal-body {
+    padding: 1.5rem;
+
+    .form-group {
+        margin-bottom: 1.25rem;
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: $text-color;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s;
+
+            &:focus {
+                outline: none;
+                border-color: $primary-color;
+                box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+            }
+
+            &::placeholder {
+                color: $light-text;
+            }
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23868e96' viewBox='0 0 16 16'%3E%3Cpath d='M8 10.5l-4-4h8l-4 4z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+    }
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+    background: $background-color;
+    border-radius: 0 0 20px 20px;
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.75rem 1.5rem;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: none;
+
+        &.btn-outline {
+            background: $white;
+            border: 1px solid #e0e0e0;
+            color: $text-color;
+
+            &:hover {
+                background: #f0f0f0;
+            }
+        }
+
+        &.btn-primary {
+            background: linear-gradient(135deg, $primary-color, $primary-dark);
+            color: $white;
+            box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+
+            &:hover {
+                transform: translateY(-2px);
+            }
+        }
+    }
+}

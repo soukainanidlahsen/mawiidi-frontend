@@ -1,0 +1,89 @@
+<div class="structures-page">
+    <header class="page-header">
+        <div class="header-content">
+            <h1>Structures Management</h1>
+            <p>Manage establishments, services, and doctors</p>
+        </div>
+        <button class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14" />
+            </svg>
+            {{ activeTab === 'establishments' ? 'Add Establishment' : 'Add Doctor' }}
+        </button>
+    </header>
+
+    <div class="tabs">
+        <button [class.active]="activeTab === 'establishments'" (click)="setTab('establishments')">
+            🏥 Establishments
+        </button>
+        <button [class.active]="activeTab === 'doctors'" (click)="setTab('doctors')">
+            👨‍⚕️ Doctors
+        </button>
+    </div>
+
+    <div class="search-bar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+        </svg>
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search...">
+    </div>
+
+    <!-- Establishments Table -->
+    <div class="data-table" *ngIf="activeTab === 'establishments'">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Services</th>
+                    <th>Doctors</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let est of establishments">
+                    <td class="name-cell">🏥 {{ est.name }}</td>
+                    <td>{{ est.type }}</td>
+                    <td>{{ est.services }}</td>
+                    <td>{{ est.doctors }}</td>
+                    <td><span class="status-badge" [class.active]="est.status === 'active'">{{ est.status }}</span></td>
+                    <td class="actions">
+                        <button class="btn-icon" title="Edit">✏️</button>
+                        <button class="btn-icon" title="View">👁️</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Doctors Table -->
+    <div class="data-table" *ngIf="activeTab === 'doctors'">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Specialty</th>
+                    <th>Establishment</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let doc of doctors">
+                    <td class="name-cell">👨‍⚕️ {{ doc.name }}</td>
+                    <td>{{ doc.specialty }}</td>
+                    <td>{{ doc.establishment }}</td>
+                    <td><span class="status-badge" [class.active]="doc.status === 'active'">{{ doc.status }}</span></td>
+                    <td class="actions">
+                        <button class="btn-icon" title="Edit">✏️</button>
+                        <button class="btn-icon" title="View">👁️</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

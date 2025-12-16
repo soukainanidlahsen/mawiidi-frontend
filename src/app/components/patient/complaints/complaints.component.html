@@ -1,32 +1,32 @@
 <div class="complaints-container">
     <div class="header">
-        <h2>My Complaints</h2>
+        <h2>{{ 'complaints.myComplaints' | translate }}</h2>
         <button class="btn btn-primary" (click)="toggleForm()">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2">
                 <line x1="12" x2="12" y1="5" y2="19" />
                 <line x1="5" x2="19" y1="12" y2="12" />
             </svg>
-            New Complaint
+            {{ 'complaints.newComplaint' | translate }}
         </button>
     </div>
 
     <!-- New Complaint Form -->
     <div class="complaint-form card" *ngIf="showForm">
-        <h3>Submit a Complaint</h3>
+        <h3>{{ 'complaints.newComplaint' | translate }}</h3>
         <div class="form-group">
-            <label for="subject">Subject</label>
+            <label for="subject">{{ 'complaints.subject' | translate }}</label>
             <input type="text" id="subject" [(ngModel)]="newComplaint.subject"
-                placeholder="Brief description of your issue" class="form-control">
+                [placeholder]="'complaints.subject' | translate" class="form-control">
         </div>
         <div class="form-group">
-            <label for="description">Description</label>
+            <label for="description">{{ 'complaints.description' | translate }}</label>
             <textarea id="description" [(ngModel)]="newComplaint.description" rows="4"
-                placeholder="Provide details about your complaint..." class="form-control"></textarea>
+                [placeholder]="'complaints.description' | translate" class="form-control"></textarea>
         </div>
         <div class="form-actions">
-            <button class="btn btn-outline" (click)="toggleForm()">Cancel</button>
-            <button class="btn btn-primary" (click)="submitComplaint()">Submit Complaint</button>
+            <button class="btn btn-outline" (click)="toggleForm()">{{ 'common.cancel' | translate }}</button>
+            <button class="btn btn-primary" (click)="submitComplaint()">{{ 'complaints.submit' | translate }}</button>
         </div>
     </div>
 
@@ -47,14 +47,14 @@
                         stroke="currentColor" stroke-width="2">
                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                     </svg>
-                    Response:
+                    {{ 'complaints.response' | translate }}:
                 </div>
                 <p>{{ complaint.response }}</p>
             </div>
         </div>
 
         <div class="empty-state" *ngIf="complaints.length === 0">
-            No complaints yet. We hope everything is going well!
+            {{ 'complaints.noComplaints' | translate }}
         </div>
     </div>
 </div>

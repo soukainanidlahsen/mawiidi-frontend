@@ -1,0 +1,166 @@
+$primary-color: #0c8599;
+$primary-dark: #0b7285;
+$secondary-color: #20c997;
+$accent-color: #e3fafc;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+
+.notifications-page {
+    font-family: 'Inter', sans-serif;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .header-content {
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: $text-color;
+            margin: 0 0 0.25rem 0;
+        }
+
+        p {
+            color: $light-text;
+            margin: 0;
+        }
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &.btn-outline {
+            background: transparent;
+            border: 1px solid #e0e0e0;
+            color: $text-color;
+
+            &:hover {
+                background: $accent-color;
+                border-color: $primary-color;
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+.notifications-container {
+    background: $white;
+    border-radius: 16px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+        background: $background-color;
+    }
+
+    &.unread {
+        background: rgba($primary-color, 0.05);
+
+        &:hover {
+            background: rgba($primary-color, 0.08);
+        }
+    }
+
+    .notif-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+
+        &.type-appointment {
+            background: rgba($primary-color, 0.15);
+        }
+
+        &.type-message {
+            background: rgba(#7c3aed, 0.15);
+        }
+
+        &.type-system {
+            background: rgba($light-text, 0.15);
+        }
+
+        &.type-schedule {
+            background: rgba($secondary-color, 0.15);
+        }
+    }
+
+    .notif-content {
+        flex: 1;
+
+        .notif-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.25rem;
+
+            .title {
+                font-weight: 600;
+                color: $text-color;
+                font-size: 1rem;
+            }
+
+            .date {
+                font-size: 0.8rem;
+                color: $light-text;
+            }
+        }
+
+        .message {
+            color: $light-text;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+    }
+
+    .notif-status {
+        .unread-badge {
+            width: 10px;
+            height: 10px;
+            background: $primary-color;
+            border-radius: 50%;
+            display: block;
+        }
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: $light-text;
+
+    svg {
+        margin-bottom: 1rem;
+        color: $light-text;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}

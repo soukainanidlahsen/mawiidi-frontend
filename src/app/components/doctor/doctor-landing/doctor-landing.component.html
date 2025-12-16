@@ -1,0 +1,211 @@
+<div class="landing-page" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Mawiidi 2 Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Mawiidi 2</h1>
+                    <span class="slogan">{{ 'doctor.slogan' | translate }}</span>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <ul>
+                    <li><a routerLink="/doctor-portal" fragment="home" class="active">{{ 'landing.nav.home' | translate
+                            }}</a></li>
+                    <li><a routerLink="/doctor-portal" fragment="features">{{ 'doctor.nav.features' | translate }}</a>
+                    </li>
+                    <li><a routerLink="/doctor-portal" fragment="benefits">{{ 'doctor.nav.benefits' | translate }}</a>
+                    </li>
+                    <li><a routerLink="/doctor-portal" fragment="contact">{{ 'landing.nav.contact' | translate }}</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="lang-switcher">
+                    <button [class.active]="currentLang === 'ar'" (click)="switchLang('ar')">AR</button>
+                    <span class="sep">|</span>
+                    <button [class.active]="currentLang === 'fr'" (click)="switchLang('fr')">FR</button>
+                    <span class="sep">|</span>
+                    <button [class.active]="currentLang === 'en'" (click)="switchLang('en')">EN</button>
+                </div>
+                <a routerLink="/login" class="btn btn-primary">{{ 'landing.login' | translate }}</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-tag">{{ 'doctor.hero.tag' | translate }}</span>
+                <h1 class="hero-title">{{ 'doctor.hero.title' | translate }}</h1>
+                <p class="hero-subtitle">{{ 'doctor.hero.subtitle' | translate }}</p>
+                <div class="hero-buttons">
+                    <a routerLink="/login" class="btn btn-white">{{ 'doctor.hero.login' | translate }}</a>
+                    <a routerLink="/register" class="btn btn-outline-white">{{ 'doctor.hero.register' | translate }}</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <img src="assets/hero-doctor.png" alt="Doctor" class="doctor-img">
+                    <div class="circle-bg"></div>
+                </div>
+            </div>
+        </div>
+        <div class="wave-shape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1"
+                    d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>{{ 'doctor.features.title' | translate }}</h2>
+                <p>{{ 'doctor.features.subtitle' | translate }}</p>
+            </div>
+            <div class="features-grid">
+                <!-- Schedule Management -->
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" x2="16" y1="2" y2="6" />
+                            <line x1="8" x2="8" y1="2" y2="6" />
+                            <line x1="3" x2="21" y1="10" y2="10" />
+                        </svg>
+                    </div>
+                    <h3>{{ 'doctor.feature.schedule' | translate }}</h3>
+                    <p>{{ 'doctor.feature.schedule_desc' | translate }}</p>
+                </div>
+
+                <!-- Patient Records -->
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                            <path d="M15 2H9a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
+                            <path d="M12 11h4" />
+                            <path d="M12 16h4" />
+                            <path d="M8 11h.01" />
+                            <path d="M8 16h.01" />
+                        </svg>
+                    </div>
+                    <h3>{{ 'doctor.feature.records' | translate }}</h3>
+                    <p>{{ 'doctor.feature.records_desc' | translate }}</p>
+                </div>
+
+                <!-- Prescriptions -->
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" x2="8" y1="13" y2="13" />
+                            <line x1="16" x2="8" y1="17" y2="17" />
+                            <line x1="10" x2="8" y1="9" y2="9" />
+                        </svg>
+                    </div>
+                    <h3>{{ 'doctor.feature.prescriptions' | translate }}</h3>
+                    <p>{{ 'doctor.feature.prescriptions_desc' | translate }}</p>
+                </div>
+
+                <!-- Messaging -->
+                <div class="feature-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                    </div>
+                    <h3>{{ 'doctor.feature.messaging' | translate }}</h3>
+                    <p>{{ 'doctor.feature.messaging_desc' | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <div class="benefits-content">
+                <h2>{{ 'doctor.benefits.title' | translate }}</h2>
+                <p>{{ 'doctor.benefits.desc' | translate }}</p>
+                <ul class="benefits-list">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {{ 'doctor.benefit.1' | translate }}
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {{ 'doctor.benefit.2' | translate }}
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {{ 'doctor.benefit.3' | translate }}
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {{ 'doctor.benefit.4' | translate }}
+                    </li>
+                </ul>
+                <a routerLink="/register" class="btn btn-primary">{{ 'doctor.benefits.cta' | translate }}</a>
+            </div>
+            <div class="benefits-image">
+                <img src="assets/about-doctor.png" alt="Doctor Benefits">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-col">
+                <h3>Mawiidi 2</h3>
+                <p>{{ 'doctor.footer.desc' | translate }}</p>
+            </div>
+            <div class="footer-col">
+                <h3>{{ 'landing.footer.links' | translate }}</h3>
+                <ul>
+                    <li><a routerLink="/">{{ 'landing.nav.home' | translate }}</a></li>
+                    <li><a routerLink="/doctor-portal">{{ 'doctor.nav.features' | translate }}</a></li>
+                    <li><a routerLink="/doctor-portal">{{ 'landing.nav.contact' | translate }}</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>{{ 'landing.footer.contact' | translate }}</h3>
+                <p>Email: doctors&#64;mawiidi.ma</p>
+                <p>Tel: 05 22 00 00 00</p>
+            </div>
+            <div class="footer-col">
+                <h3>{{ 'doctor.footer.support' | translate }}</h3>
+                <p>{{ 'doctor.footer.support_desc' | translate }}</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ currentYear }} Mawiidi 2. {{ 'landing.footer.rights' | translate }}</p>
+        </div>
+    </footer>
+</div>

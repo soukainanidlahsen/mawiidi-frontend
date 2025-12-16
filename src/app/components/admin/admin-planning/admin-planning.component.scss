@@ -1,0 +1,155 @@
+$primary-color: #7c3aed;
+$primary-dark: #6d28d9;
+$accent-color: #f3f0ff;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+
+.planning-page {
+    font-family: 'Inter', sans-serif;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+
+    h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $text-color;
+        margin: 0 0 0.25rem 0;
+    }
+
+    p {
+        color: $light-text;
+        margin: 0;
+    }
+}
+
+.requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.request-card {
+    background: $white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s;
+
+    &.pending {
+        border-left: 4px solid #f59f00;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .request-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+
+        .doctor-info {
+            .doctor-name {
+                display: block;
+                font-weight: 600;
+                font-size: 1.1rem;
+                color: $text-color;
+            }
+
+            .establishment {
+                font-size: 0.9rem;
+                color: $light-text;
+            }
+        }
+
+        .status-badge {
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: capitalize;
+
+            &.status-pending {
+                background: rgba(#f59f00, 0.15);
+                color: darken(#f59f00, 10%);
+            }
+
+            &.status-approved {
+                background: rgba(#20c997, 0.15);
+                color: darken(#20c997, 10%);
+            }
+
+            &.status-rejected {
+                background: rgba(#dc3545, 0.15);
+                color: darken(#dc3545, 10%);
+            }
+        }
+    }
+
+    .request-body {
+        margin-bottom: 1rem;
+
+        .info-row {
+            display: flex;
+            margin-bottom: 0.5rem;
+
+            label {
+                min-width: 100px;
+                color: $light-text;
+                font-size: 0.9rem;
+            }
+
+            span {
+                color: $text-color;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .request-actions {
+        display: flex;
+        gap: 0.75rem;
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+
+            &.btn-success {
+                background: #20c997;
+                color: $white;
+
+                &:hover {
+                    background: darken(#20c997, 5%);
+                }
+            }
+
+            &.btn-danger {
+                background: #dc3545;
+                color: $white;
+
+                &:hover {
+                    background: darken(#dc3545, 5%);
+                }
+            }
+
+            &.btn-outline {
+                background: transparent;
+                border: 1px solid #e0e0e0;
+
+                &:hover {
+                    background: $accent-color;
+                }
+            }
+        }
+    }
+}

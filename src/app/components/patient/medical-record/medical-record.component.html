@@ -1,5 +1,5 @@
 <div class="records-container">
-    <h2>My Medical Records</h2>
+    <h2>{{ 'records.title' | translate }}</h2>
 
     <div class="records-list">
         <div class="record-card card" *ngFor="let record of records">
@@ -8,13 +8,16 @@
                 <span class="badge">{{ record.specialty }}</span>
             </div>
             <div class="card-body">
-                <p><strong>Last Visit:</strong> {{ record.lastVisit | date }}</p>
-                <p><strong>Diagnosis:</strong> {{ record.diagnosis }}</p>
-                <p><strong>Prescription:</strong> {{ record.prescription }}</p>
+                <p><strong>{{ 'records.lastVisit' | translate }}:</strong> {{ record.lastVisit | date }}</p>
+                <p><strong>{{ 'records.diagnosis' | translate }}:</strong> {{ record.diagnosis }}</p>
+                <p><strong>{{ 'records.prescription' | translate }}:</strong> {{ record.prescription }}</p>
             </div>
             <div class="card-footer">
-                <button class="btn btn-outline btn-sm">View Full History</button>
+                <button class="btn btn-outline btn-sm">{{ 'dashboard.details' | translate }}</button>
             </div>
+        </div>
+        <div class="empty-state" *ngIf="records.length === 0">
+            <p>{{ 'records.noRecords' | translate }}</p>
         </div>
     </div>
 </div>

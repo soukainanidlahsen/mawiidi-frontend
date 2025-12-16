@@ -1,0 +1,169 @@
+$primary-color: #0c8599;
+$primary-dark: #0b7285;
+$secondary-color: #20c997;
+$accent-color: #e3fafc;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+
+.patients-page {
+    font-family: 'Inter', sans-serif;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .header-content {
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: $text-color;
+            margin: 0 0 0.25rem 0;
+        }
+
+        p {
+            color: $light-text;
+            margin: 0;
+        }
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        background: $white;
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        gap: 10px;
+        min-width: 300px;
+
+        svg {
+            color: $light-text;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            font-size: 0.95rem;
+            flex: 1;
+            background: transparent;
+
+            &::placeholder {
+                color: $light-text;
+            }
+        }
+    }
+}
+
+.patients-container {
+    background: $white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    overflow-x: auto;
+}
+
+.patients-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    th {
+        font-weight: 600;
+        color: $light-text;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    td {
+        color: $text-color;
+        font-size: 0.95rem;
+    }
+
+    tbody tr {
+        transition: background 0.3s;
+
+        &:hover {
+            background: $accent-color;
+        }
+    }
+
+    .patient-name {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 600;
+
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, $primary-color, $primary-dark);
+            color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: capitalize;
+
+        &.status-active {
+            background: rgba($primary-color, 0.15);
+            color: $primary-dark;
+        }
+
+        &.status-follow-up {
+            background: rgba(#f59f00, 0.15);
+            color: darken(#f59f00, 10%);
+        }
+
+        &.status-recovered {
+            background: rgba($secondary-color, 0.15);
+            color: darken($secondary-color, 10%);
+        }
+    }
+
+    .actions {
+        display: flex;
+        gap: 0.5rem;
+
+        .btn-icon {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: $background-color;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: $light-text;
+            transition: all 0.3s;
+
+            &:hover {
+                background: $primary-color;
+                color: $white;
+            }
+        }
+    }
+}

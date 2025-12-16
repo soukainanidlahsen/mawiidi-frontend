@@ -1,10 +1,10 @@
 <div class="appointments-container">
-    <h2>My Appointments</h2>
+    <h2>{{ 'appointments.title' | translate }}</h2>
 
-    <div *ngIf="isLoading">Loading...</div>
+    <div *ngIf="isLoading">{{ 'dashboard.loading' | translate }}</div>
 
     <div *ngIf="!isLoading && appointments.length === 0" class="empty-state">
-        <p>You have no appointments scheduled.</p>
+        <p>{{ 'appointments.noAppointments' | translate }}</p>
     </div>
 
     <div class="appointments-list" *ngIf="!isLoading && appointments.length > 0">
@@ -12,12 +12,13 @@
             <div class="status-indicator" [ngClass]="apt.status.toLowerCase()"></div>
             <div class="apt-info">
                 <h3>{{ apt.doctorName }}</h3>
-                <p class="time">{{ apt.date | date:'mediumDate' }} at {{ apt.time }}</p>
+                <p class="time">{{ apt.date | date:'mediumDate' }} - {{ apt.time }}</p>
                 <span class="badge" [ngClass]="apt.status.toLowerCase()">{{ apt.status }}</span>
             </div>
             <div class="apt-actions">
-                <button class="btn btn-outline btn-sm">View Details</button>
-                <button class="btn btn-danger btn-sm" *ngIf="apt.status === 'PENDING'">Cancel</button>
+                <button class="btn btn-outline btn-sm">{{ 'dashboard.details' | translate }}</button>
+                <button class="btn btn-danger btn-sm" *ngIf="apt.status === 'PENDING'">{{ 'appointments.cancel' |
+                    translate }}</button>
             </div>
         </div>
     </div>

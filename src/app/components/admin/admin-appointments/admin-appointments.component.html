@@ -1,0 +1,69 @@
+<div class="appointments-page">
+    <header class="page-header">
+        <div class="header-content">
+            <h1>Appointments Supervision</h1>
+            <p>Global view of all appointments</p>
+        </div>
+    </header>
+
+    <!-- Stats -->
+    <div class="stats-row">
+        <div class="stat-card">
+            <span class="value">{{ stats.total | number }}</span>
+            <span class="label">Total Appointments</span>
+        </div>
+        <div class="stat-card">
+            <span class="value">{{ stats.completed | number }}</span>
+            <span class="label">Completed</span>
+        </div>
+        <div class="stat-card">
+            <span class="value">{{ stats.occupancyRate }}%</span>
+            <span class="label">Occupancy Rate</span>
+        </div>
+        <div class="stat-card warning">
+            <span class="value">{{ stats.noShowRate }}%</span>
+            <span class="label">No-Show Rate</span>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+        <select [(ngModel)]="filterEstablishment">
+            <option value="">All Establishments</option>
+            <option value="chu">CHU Ibn Sina</option>
+            <option value="moulay">Hôpital Moulay Youssef</option>
+        </select>
+        <select [(ngModel)]="filterDoctor">
+            <option value="">All Doctors</option>
+            <option value="tazi">Dr. Ahmed Tazi</option>
+            <option value="idrissi">Dr. Sara Idrissi</option>
+        </select>
+        <input type="date" placeholder="Start Date">
+        <input type="date" placeholder="End Date">
+        <button class="btn btn-primary">Apply Filters</button>
+    </div>
+
+    <!-- Table -->
+    <div class="data-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Establishment</th>
+                    <th>Date & Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let apt of appointments">
+                    <td>{{ apt.patientName }}</td>
+                    <td>{{ apt.doctorName }}</td>
+                    <td>{{ apt.establishment }}</td>
+                    <td>{{ apt.date | date:'short' }}</td>
+                    <td><span class="status-badge" [ngClass]="getStatusClass(apt.status)">{{ apt.status }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

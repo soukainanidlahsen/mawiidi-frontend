@@ -88,3 +88,19 @@ $font-family: 'Inter', sans-serif;
     padding: 2rem;
     overflow-y: auto;
 }
+
+// RTL Support for Arabic
+.dashboard-container.rtl {
+    direction: rtl;
+    text-align: right;
+
+    .sidebar {
+        border-right: none;
+        border-left: 1px solid #e9ecef;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.03);
+
+        nav a {
+            flex-direction: row-reverse;
+        }
+    }
+}

@@ -1,20 +1,20 @@
 <div class="booking-container">
-    <h2>Book an Appointment</h2>
+    <h2>{{ 'booking.title' | translate }}</h2>
 
     <!-- Step 1: Search & Select Doctor -->
     <div *ngIf="step === 1">
         <div class="search-bar card">
             <div class="form-group">
-                <label>City</label>
+                <label>{{ 'booking.city' | translate }}</label>
                 <select [(ngModel)]="searchCity" (change)="filterDoctors()" class="form-control">
-                    <option value="">All Cities</option>
+                    <option value="">{{ 'booking.allCities' | translate }}</option>
                     <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Specialty</label>
+                <label>{{ 'booking.specialty' | translate }}</label>
                 <select [(ngModel)]="searchSpecialty" (change)="filterDoctors()" class="form-control">
-                    <option value="">All Specialties</option>
+                    <option value="">{{ 'booking.allSpecialties' | translate }}</option>
                     <option *ngFor="let spec of specialties" [value]="spec">{{ spec }}</option>
                 </select>
             </div>
@@ -25,21 +25,33 @@
                 <div class="doc-info">
                     <h3>Dr. {{ doctor.firstName }} {{ doctor.lastName }}</h3>
                     <p class="specialty">{{ doctor.specialty }}</p>
-                    <p class="location">📍 {{ doctor.city }} - {{ doctor.address }}</p>
+                    <p class="location">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        {{ doctor.city }} - {{ doctor.address }}
+                    </p>
                 </div>
-                <button class="btn btn-primary" (click)="selectDoctor(doctor)">Book Now</button>
+                <button class="btn btn-primary" (click)="selectDoctor(doctor)">{{ 'dashboard.bookNow' | translate
+                    }}</button>
+            </div>
+            <div *ngIf="filteredDoctors.length === 0" class="no-results">
+                <p>{{ 'booking.noDoctors' | translate }}</p>
             </div>
         </div>
     </div>
 
     <!-- Step 2: Select Slot -->
     <div *ngIf="step === 2 && selectedDoctor">
-        <button class="btn btn-outline mb-3" (click)="back()">← Back</button>
+        <button class="btn btn-outline mb-3" (click)="back()">← {{ 'booking.back' | translate }}</button>
         <div class="card">
-            <h3>Book with Dr. {{ selectedDoctor.firstName }} {{ selectedDoctor.lastName }}</h3>
+            <h3>{{ 'booking.bookWith' | translate }} Dr. {{ selectedDoctor.firstName }} {{ selectedDoctor.lastName }}
+            </h3>
 
             <div class="form-group">
-                <label>Select Date</label>
+                <label>{{ 'booking.selectDate' | translate }}</label>
                 <input type="date" [(ngModel)]="selectedDate" [min]="minDate" [max]="maxDate" class="form-control">
             </div>
 
@@ -51,7 +63,7 @@
             </div>
 
             <button class="btn btn-primary mt-3" [disabled]="!selectedDate || !selectedTime" (click)="confirmBooking()">
-                Confirm Booking
+                {{ 'booking.confirm' | translate }}
             </button>
         </div>
     </div>

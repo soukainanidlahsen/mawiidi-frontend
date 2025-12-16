@@ -1,0 +1,208 @@
+$primary-color: #0c8599;
+$primary-dark: #0b7285;
+$secondary-color: #20c997;
+$accent-color: #e3fafc;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+
+.planning-page {
+    font-family: 'Inter', sans-serif;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .header-content {
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: $text-color;
+            margin: 0 0 0.25rem 0;
+        }
+
+        p {
+            color: $light-text;
+            margin: 0;
+        }
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &.btn-primary {
+            background: linear-gradient(135deg, $primary-color, $primary-dark);
+            color: $white;
+            box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+
+            &:hover {
+                transform: translateY(-2px);
+            }
+        }
+    }
+}
+
+.week-navigation {
+    margin-bottom: 1.5rem;
+
+    .week-days {
+        display: flex;
+        gap: 0.75rem;
+    }
+
+    .day-card {
+        flex: 1;
+        background: $white;
+        border-radius: 12px;
+        padding: 1rem;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 2px solid transparent;
+
+        &:hover {
+            border-color: rgba($primary-color, 0.3);
+        }
+
+        &.selected {
+            background: linear-gradient(135deg, $primary-color, $primary-dark);
+            color: $white;
+
+            .day-name,
+            .day-number {
+                color: $white;
+            }
+        }
+
+        &.today:not(.selected) {
+            border-color: $primary-color;
+        }
+
+        .day-name {
+            display: block;
+            font-size: 0.85rem;
+            color: $light-text;
+            margin-bottom: 0.25rem;
+        }
+
+        .day-number {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: $text-color;
+        }
+    }
+}
+
+.schedule-container {
+    background: $white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+    .schedule-header {
+        margin-bottom: 1.5rem;
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: $text-color;
+            margin: 0;
+        }
+    }
+}
+
+.time-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.slot {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    transition: all 0.3s;
+
+    &.slot-available {
+        background: rgba($secondary-color, 0.1);
+        border-left: 3px solid $secondary-color;
+    }
+
+    &.slot-booked {
+        background: rgba($primary-color, 0.1);
+        border-left: 3px solid $primary-color;
+    }
+
+    &.slot-blocked {
+        background: rgba($light-text, 0.1);
+        border-left: 3px solid $light-text;
+    }
+
+    .slot-time {
+        min-width: 60px;
+        font-weight: 600;
+        color: $text-color;
+    }
+
+    .slot-content {
+        flex: 1;
+        margin-left: 1rem;
+
+        .patient-name {
+            font-weight: 600;
+            color: $text-color;
+            display: block;
+        }
+
+        .appointment-type {
+            font-size: 0.85rem;
+            color: $light-text;
+        }
+
+        .available-text {
+            color: $secondary-color;
+            font-weight: 500;
+        }
+
+        .blocked-text {
+            color: $light-text;
+            font-style: italic;
+        }
+    }
+
+    .slot-actions {
+        .btn-icon {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: $white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: $light-text;
+            transition: all 0.3s;
+
+            &:hover {
+                background: $primary-color;
+                color: $white;
+            }
+        }
+    }
+}

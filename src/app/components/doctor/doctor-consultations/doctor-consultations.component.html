@@ -1,0 +1,118 @@
+<div class="consultations-page">
+    <header class="page-header">
+        <div class="header-content">
+            <h1>Consultations</h1>
+            <p>View and manage patient consultations</p>
+        </div>
+        <button class="btn btn-primary" (click)="openNewConsultation()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14" />
+            </svg>
+            New Consultation
+        </button>
+    </header>
+
+    <div class="consultations-container">
+        <div class="consultation-card" *ngFor="let consult of consultations">
+            <div class="card-header">
+                <div class="patient-info">
+                    <div class="avatar">{{ consult.patientName.charAt(0) }}</div>
+                    <div class="details">
+                        <span class="name">{{ consult.patientName }}</span>
+                        <span class="date">{{ consult.date | date:'medium' }}</span>
+                    </div>
+                </div>
+                <span class="status-badge" [ngClass]="getStatusClass(consult.status)">
+                    {{ getStatusLabel(consult.status) }}
+                </span>
+            </div>
+            <div class="card-body">
+                <div class="info-row">
+                    <label>Diagnosis:</label>
+                    <span>{{ consult.diagnosis }}</span>
+                </div>
+                <div class="info-row">
+                    <label>Prescription:</label>
+                    <span>{{ consult.prescription }}</span>
+                </div>
+                <div class="info-row" *ngIf="consult.notes">
+                    <label>Notes:</label>
+                    <span>{{ consult.notes }}</span>
+                </div>
+            </div>
+            <div class="card-actions">
+                <button class="btn-outline" *ngIf="consult.status === 'pending-report'">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                    Generate Report
+                </button>
+                <button class="btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    View Details
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Consultation Modal -->
+    <div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+        <div class="modal" (click)="$event.stopPropagation()">
+            <div class="modal-header">
+                <h2>New Consultation</h2>
+                <button class="close-btn" (click)="closeModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="patient">Patient *</label>
+                    <select id="patient" [(ngModel)]="newConsultation.patientId">
+                        <option [value]="0" disabled>-- Select a patient --</option>
+                        <option *ngFor="let patient of patients" [value]="patient.id">
+                            {{ patient.name }} (Last visit: {{ patient.lastVisit | date:'shortDate' }})
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="diagnosis">Diagnosis *</label>
+                    <input type="text" id="diagnosis" [(ngModel)]="newConsultation.diagnosis"
+                        placeholder="e.g., Hypertension Stage 2">
+                </div>
+                <div class="form-group">
+                    <label for="prescription">Prescription</label>
+                    <input type="text" id="prescription" [(ngModel)]="newConsultation.prescription"
+                        placeholder="e.g., Amlodipine 5mg - 1x daily">
+                </div>
+                <div class="form-group">
+                    <label for="notes">Consultation Notes</label>
+                    <textarea id="notes" [(ngModel)]="newConsultation.notes" rows="4"
+                        placeholder="Write your consultation notes here..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" (click)="closeModal()">Cancel</button>
+                <button class="btn btn-primary" (click)="saveConsultation()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                        <polyline points="17 21 17 13 7 13 7 21" />
+                        <polyline points="7 3 7 8 15 8" />
+                    </svg>
+                    Save Consultation
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

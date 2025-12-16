@@ -1,8 +1,8 @@
 <div class="dashboard-content">
     <header>
         <div class="welcome-section">
-            <h1>Welcome, {{ patient?.firstName || 'Guest' }}</h1>
-            <p class="subtitle">Here's your health overview</p>
+            <h1>{{ 'dashboard.welcome' | translate }} {{ patient?.firstName || 'Guest' }}</h1>
+            <p class="subtitle">{{ 'dashboard.subtitle' | translate }}</p>
         </div>
         <div class="date-section">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -30,7 +30,7 @@
             </div>
             <div class="stat-info">
                 <span class="stat-value">{{ upcomingAppointments.length }}</span>
-                <span class="stat-label">Upcoming Appointments</span>
+                <span class="stat-label">{{ 'dashboard.upcomingAppointments' | translate }}</span>
             </div>
         </div>
         <div class="stat-card">
@@ -43,7 +43,7 @@
             </div>
             <div class="stat-info">
                 <span class="stat-value">5</span>
-                <span class="stat-label">Medical Records</span>
+                <span class="stat-label">{{ 'dashboard.medicalRecords' | translate }}</span>
             </div>
         </div>
         <div class="stat-card">
@@ -55,7 +55,7 @@
             </div>
             <div class="stat-info">
                 <span class="stat-value">2</span>
-                <span class="stat-label">New Messages</span>
+                <span class="stat-label">{{ 'dashboard.newMessages' | translate }}</span>
             </div>
         </div>
     </div>
@@ -64,7 +64,7 @@
         <!-- Quick Actions -->
         <section class="card quick-actions">
             <div class="card-header">
-                <h2>Quick Actions</h2>
+                <h2>{{ 'dashboard.quickActions' | translate }}</h2>
             </div>
             <div class="action-buttons">
                 <a class="action-btn" routerLink="/patient/booking">
@@ -78,7 +78,7 @@
                             <path d="m9 16 2 2 4-4" />
                         </svg>
                     </div>
-                    <span>Book Appointment</span>
+                    <span>{{ 'dashboard.book' | translate }}</span>
                 </a>
                 <a class="action-btn" routerLink="/patient/messaging">
                     <div class="action-icon">
@@ -87,7 +87,7 @@
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                         </svg>
                     </div>
-                    <span>Send Message</span>
+                    <span>{{ 'dashboard.sendMessage' | translate }}</span>
                 </a>
                 <a class="action-btn" routerLink="/patient/medical-records">
                     <div class="action-icon">
@@ -97,7 +97,7 @@
                                 d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z" />
                         </svg>
                     </div>
-                    <span>View Records</span>
+                    <span>{{ 'dashboard.viewRecords' | translate }}</span>
                 </a>
                 <a class="action-btn" routerLink="/patient/complaints">
                     <div class="action-icon">
@@ -109,7 +109,7 @@
                             <line x1="9" x2="15" y1="15" y2="15" />
                         </svg>
                     </div>
-                    <span>File Complaint</span>
+                    <span>{{ 'dashboard.fileComplaint' | translate }}</span>
                 </a>
             </div>
         </section>
@@ -117,11 +117,11 @@
         <!-- Upcoming Appointments -->
         <section class="card upcoming-appointments">
             <div class="card-header">
-                <h2>Upcoming Appointments</h2>
-                <a routerLink="/patient/appointments" class="view-all">View All</a>
+                <h2>{{ 'dashboard.upcoming' | translate }}</h2>
+                <a routerLink="/patient/appointments" class="view-all">{{ 'dashboard.viewAll' | translate }}</a>
             </div>
             <div *ngIf="isLoading" class="loading">
-                <span>Loading...</span>
+                <span>{{ 'dashboard.loading' | translate }}</span>
             </div>
             <div *ngIf="!isLoading && upcomingAppointments.length === 0" class="empty-state">
                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
@@ -131,8 +131,9 @@
                     <line x1="8" x2="8" y1="2" y2="6" />
                     <line x1="3" x2="21" y1="10" y2="10" />
                 </svg>
-                <p>No upcoming appointments</p>
-                <a routerLink="/patient/booking" class="btn btn-primary btn-sm">Book Now</a>
+                <p>{{ 'dashboard.noAppointments' | translate }}</p>
+                <a routerLink="/patient/booking" class="btn btn-primary btn-sm">{{ 'dashboard.bookNow' | translate
+                    }}</a>
             </div>
             <div class="appointment-list" *ngIf="!isLoading && upcomingAppointments.length > 0">
                 <div class="appointment-item" *ngFor="let apt of upcomingAppointments">
@@ -153,7 +154,7 @@
                         <span class="status" [ngClass]="apt.status.toLowerCase()">{{ apt.status }}</span>
                     </div>
                     <div class="apt-actions">
-                        <button class="btn btn-outline btn-sm">Details</button>
+                        <button class="btn btn-outline btn-sm">{{ 'dashboard.details' | translate }}</button>
                     </div>
                 </div>
             </div>

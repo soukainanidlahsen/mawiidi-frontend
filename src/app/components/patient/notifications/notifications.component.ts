@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
 
 interface Notification {
   id: number;
@@ -13,7 +14,7 @@ interface Notification {
 @Component({
   selector: 'app-notifications',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './notifications.component.html',
   styleUrl: './notifications.component.scss'
 })

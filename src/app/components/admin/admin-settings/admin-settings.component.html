@@ -1,0 +1,119 @@
+<div class="settings-page">
+    <header class="page-header">
+        <h1>System Settings</h1>
+        <p>Configure appointment and notification settings</p>
+    </header>
+
+    <div class="settings-grid">
+        <!-- Appointment Settings -->
+        <div class="settings-card">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                    <line x1="16" x2="16" y1="2" y2="6" />
+                    <line x1="8" x2="8" y1="2" y2="6" />
+                    <line x1="3" x2="21" y1="10" y2="10" />
+                </svg>
+                Appointment Settings
+            </h2>
+            <div class="setting-item">
+                <label>Appointment Duration</label>
+                <select [(ngModel)]="settings.appointmentDuration">
+                    <option [value]="15">15 minutes</option>
+                    <option [value]="20">20 minutes</option>
+                    <option [value]="30">30 minutes</option>
+                </select>
+            </div>
+            <div class="setting-item">
+                <label>Minimum Booking Delay (hours)</label>
+                <input type="number" [(ngModel)]="settings.minBookingDelay">
+            </div>
+            <div class="setting-item">
+                <label>Maximum Booking Delay (days)</label>
+                <input type="number" [(ngModel)]="settings.maxBookingDelay">
+            </div>
+        </div>
+
+        <!-- Reminder Settings -->
+        <div class="settings-card">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+                </svg>
+                Reminder Strategy
+            </h2>
+            <div class="setting-item checkbox">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settings.smsReminder">
+                    SMS Reminders
+                </label>
+            </div>
+            <div class="setting-item checkbox">
+                <label>
+                    <input type="checkbox" [(ngModel)]="settings.emailReminder">
+                    Email Reminders
+                </label>
+            </div>
+            <div class="setting-item">
+                <label>Reminder Time (hours before)</label>
+                <input type="number" [(ngModel)]="settings.reminderTime">
+            </div>
+        </div>
+
+        <!-- User Roles -->
+        <div class="settings-card full-width">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+                User Roles
+            </h2>
+            <table class="roles-table">
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Permissions</th>
+                        <th>Users</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let role of roles">
+                        <td><strong>{{ role.name }}</strong></td>
+                        <td>{{ role.permissions }}</td>
+                        <td>{{ role.users | number }}</td>
+                        <td>
+                            <button class="btn-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+                                    <path d="m15 5 4 4" />
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="actions-bar">
+        <button class="btn btn-primary" (click)="saveSettings()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                <polyline points="17 21 17 13 7 13 7 21" />
+                <polyline points="7 3 7 8 15 8" />
+            </svg>
+            Save Settings
+        </button>
+    </div>
+</div>

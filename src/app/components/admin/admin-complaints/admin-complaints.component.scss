@@ -1,0 +1,122 @@
+$primary-color: #7c3aed;
+$primary-dark: #6d28d9;
+$accent-color: #f3f0ff;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+
+.complaints-page {
+    font-family: 'Inter', sans-serif;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+
+    h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $text-color;
+        margin: 0 0 0.25rem 0;
+    }
+
+    p {
+        color: $light-text;
+        margin: 0;
+    }
+}
+
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    select {
+        padding: 0.75rem 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        min-width: 180px;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-color;
+        }
+    }
+}
+
+.data-table {
+    background: $white;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    th {
+        font-weight: 600;
+        color: $light-text;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+    }
+
+    td {
+        color: $text-color;
+    }
+
+    tbody tr:hover {
+        background: $accent-color;
+    }
+
+    .status-badge {
+        padding: 0.35rem 0.85rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: capitalize;
+
+        &.status-open {
+            background: rgba(#dc3545, 0.15);
+            color: darken(#dc3545, 10%);
+        }
+
+        &.status-in-progress {
+            background: rgba(#f59f00, 0.15);
+            color: darken(#f59f00, 10%);
+        }
+
+        &.status-closed {
+            background: rgba(#20c997, 0.15);
+            color: darken(#20c997, 10%);
+        }
+    }
+
+    .actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .btn-icon {
+        width: 32px;
+        height: 32px;
+        border: none;
+        background: $background-color;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+            background: $primary-color;
+        }
+    }
+}

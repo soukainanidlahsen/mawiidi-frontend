@@ -33,12 +33,42 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   login(request: LoginRequest): Observable<AuthResponse> {
-    // Mock Login for Demo
+    // Mock Login for Demo - Patient
     if (request.email === 'patient@mawiidi.com' && request.password === 'demo123') {
       const mockResponse: AuthResponse = {
         token: 'mock-jwt-token-patient',
         role: 'PATIENT',
         userId: 101
+      };
+      return of(mockResponse).pipe(
+        tap((response: AuthResponse) => {
+          this.saveToken(response.token);
+          this.saveUser(response);
+        })
+      );
+    }
+
+    // Mock Login for Demo - Doctor
+    if (request.email === 'doctor@mawiidi.com' && request.password === 'demo123') {
+      const mockResponse: AuthResponse = {
+        token: 'mock-jwt-token-doctor',
+        role: 'DOCTOR',
+        userId: 201
+      };
+      return of(mockResponse).pipe(
+        tap((response: AuthResponse) => {
+          this.saveToken(response.token);
+          this.saveUser(response);
+        })
+      );
+    }
+
+    // Mock Login for Demo - Admin
+    if (request.email === 'admin@mawiidi.com' && request.password === 'demo123') {
+      const mockResponse: AuthResponse = {
+        token: 'mock-jwt-token-admin',
+        role: 'ADMIN',
+        userId: 301
       };
       return of(mockResponse).pipe(
         tap((response: AuthResponse) => {

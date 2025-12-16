@@ -1,0 +1,116 @@
+<div class="messaging-page">
+    <header class="page-header">
+        <div class="header-content">
+            <h1>Messages</h1>
+            <p>{{ unreadCount }} unread messages</p>
+        </div>
+        <button class="btn btn-primary" (click)="openComposeModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 5v14M5 12h14" />
+            </svg>
+            Compose
+        </button>
+    </header>
+
+    <div class="messaging-container">
+        <!-- Message List -->
+        <div class="message-list">
+            <div class="message-item" *ngFor="let msg of messages" [class.unread]="!msg.read"
+                [class.selected]="selectedMessage?.id === msg.id" (click)="selectMessage(msg)">
+                <div class="sender-avatar" [ngClass]="getTypeClass(msg.type)">
+                    {{ msg.senderName.charAt(0) }}
+                </div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="sender">{{ msg.senderName }}</span>
+                        <span class="date">{{ msg.date | date:'shortTime' }}</span>
+                    </div>
+                    <div class="subject">{{ msg.subject }}</div>
+                    <div class="preview">{{ msg.preview }}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Detail -->
+        <div class="message-detail" *ngIf="selectedMessage">
+            <div class="detail-header">
+                <div class="sender-info">
+                    <div class="avatar" [ngClass]="getTypeClass(selectedMessage.type)">
+                        {{ selectedMessage.senderName.charAt(0) }}
+                    </div>
+                    <div class="info">
+                        <span class="name">{{ selectedMessage.senderName }}</span>
+                        <span class="date">{{ selectedMessage.date | date:'medium' }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-subject">
+                <h2>{{ selectedMessage.subject }}</h2>
+            </div>
+            <div class="detail-body">
+                <p>{{ selectedMessage.content || selectedMessage.preview }}</p>
+            </div>
+            <div class="reply-box" *ngIf="selectedMessage.type === 'patient'">
+                <textarea [(ngModel)]="replyMessage" placeholder="Type your reply..."></textarea>
+                <button class="btn btn-primary" (click)="sendReply()">Send Reply</button>
+            </div>
+        </div>
+
+        <div class="no-selection" *ngIf="!selectedMessage">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+            <p>Select a message to read</p>
+        </div>
+    </div>
+
+    <!-- Compose Modal -->
+    <div class="modal-overlay" *ngIf="showComposeModal" (click)="closeComposeModal()">
+        <div class="modal" (click)="$event.stopPropagation()">
+            <div class="modal-header">
+                <h2>New Message</h2>
+                <button class="close-btn" (click)="closeComposeModal()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="recipient">To (Patient) *</label>
+                    <select id="recipient" [(ngModel)]="newMessage.recipientId">
+                        <option [value]="0" disabled>-- Select a patient --</option>
+                        <option *ngFor="let patient of patients" [value]="patient.id">
+                            {{ patient.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" [(ngModel)]="newMessage.subject"
+                        placeholder="e.g., Appointment reminder">
+                </div>
+                <div class="form-group">
+                    <label for="content">Message *</label>
+                    <textarea id="content" [(ngModel)]="newMessage.content" rows="6"
+                        placeholder="Write your message here..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" (click)="closeComposeModal()">Cancel</button>
+                <button class="btn btn-primary" (click)="sendMessage()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    Send Message
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

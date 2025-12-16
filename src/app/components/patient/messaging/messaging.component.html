@@ -2,7 +2,7 @@
     <!-- Conversations List -->
     <div class="conversations-panel" [class.hidden-mobile]="selectedConversation">
         <div class="panel-header">
-            <h2>Messages</h2>
+            <h2>{{ 'messaging.title' | translate }}</h2>
         </div>
         <div class="conversations-list">
             <div class="conversation-item" *ngFor="let conv of conversations"
@@ -16,6 +16,9 @@
                 </div>
                 <div class="unread-dot" *ngIf="conv.unread"></div>
             </div>
+            <div class="empty-state" *ngIf="conversations.length === 0">
+                <p>{{ 'messaging.noMessages' | translate }}</p>
+            </div>
         </div>
     </div>
 
@@ -26,7 +29,7 @@
                 stroke="currentColor" stroke-width="1.5">
                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
             </svg>
-            <p>Select a conversation to start messaging</p>
+            <p>{{ 'messaging.noMessages' | translate }}</p>
         </div>
 
         <ng-container *ngIf="selectedConversation">
@@ -36,6 +39,7 @@
                         stroke="currentColor" stroke-width="2">
                         <path d="m15 18-6-6 6-6" />
                     </svg>
+                    {{ 'messaging.backToList' | translate }}
                 </button>
                 <div class="doctor-info">
                     <h3>{{ selectedConversation.doctorName }}</h3>
@@ -51,7 +55,7 @@
             </div>
 
             <div class="input-area">
-                <input type="text" [(ngModel)]="newMessage" placeholder="Type a message..."
+                <input type="text" [(ngModel)]="newMessage" [placeholder]="'messaging.typeMessage' | translate"
                     (keyup.enter)="sendMessage()">
                 <button (click)="sendMessage()" [disabled]="!newMessage.trim()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"

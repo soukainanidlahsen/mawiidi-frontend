@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
 
 interface Message {
     id: number;
@@ -21,7 +22,7 @@ interface Conversation {
 @Component({
     selector: 'app-messaging',
     standalone: true,
-    imports: [CommonModule, FormsModule],
+    imports: [CommonModule, FormsModule, TranslatePipe],
     templateUrl: './messaging.component.html',
     styleUrl: './messaging.component.scss'
 })

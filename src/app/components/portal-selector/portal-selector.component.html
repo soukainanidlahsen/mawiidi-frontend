@@ -1,0 +1,100 @@
+<div class="portal-selector" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <!-- Background Elements -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Mawiidi 2 Logo" class="logo-img">
+            <span class="logo-text">Mawiidi 2</span>
+        </div>
+        <div class="lang-switcher">
+            <button [class.active]="currentLang === 'ar'" (click)="switchLang('ar')">AR</button>
+            <button [class.active]="currentLang === 'fr'" (click)="switchLang('fr')">FR</button>
+            <button [class.active]="currentLang === 'en'" (click)="switchLang('en')">EN</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="intro">
+            <h1>{{ 'portal.title' | translate }}</h1>
+            <p>{{ 'portal.subtitle' | translate }}</p>
+        </div>
+
+        <div class="workspace-grid">
+            <!-- Patient/User Card -->
+            <a routerLink="/user" class="workspace-card user-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                </div>
+                <h2>{{ 'portal.user.title' | translate }}</h2>
+                <p>{{ 'portal.user.desc' | translate }}</p>
+                <span class="card-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                    </svg>
+                </span>
+            </a>
+
+            <!-- Doctor Card -->
+            <a routerLink="/doctor-portal" class="workspace-card doctor-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2" />
+                        <path d="M3 18a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2" />
+                        <path d="M12 7v4" />
+                        <path d="M10 9h4" />
+                        <rect x="8" y="11" width="8" height="9" rx="1" />
+                    </svg>
+                </div>
+                <h2>{{ 'portal.doctor.title' | translate }}</h2>
+                <p>{{ 'portal.doctor.desc' | translate }}</p>
+                <span class="card-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                    </svg>
+                </span>
+            </a>
+
+            <!-- Admin Card -->
+            <a routerLink="/admin-portal" class="workspace-card admin-card">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                </div>
+                <h2>{{ 'portal.admin.title' | translate }}</h2>
+                <p>{{ 'portal.admin.desc' | translate }}</p>
+                <span class="card-arrow">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Mawiidi 2. {{ 'landing.footer.rights' | translate }}</p>
+    </footer>
+</div>

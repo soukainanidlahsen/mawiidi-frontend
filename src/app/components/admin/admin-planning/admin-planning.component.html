@@ -1,0 +1,59 @@
+<div class="planning-page">
+    <header class="page-header">
+        <div class="header-content">
+            <h1>Planning Validation</h1>
+            <p>{{ pendingCount }} pending requests</p>
+        </div>
+    </header>
+
+    <div class="requests-list">
+        <div class="request-card" *ngFor="let req of requests" [class.pending]="req.status === 'pending'">
+            <div class="request-header">
+                <div class="doctor-info">
+                    <span class="doctor-name">{{ req.doctorName }}</span>
+                    <span class="establishment">{{ req.establishment }}</span>
+                </div>
+                <span class="status-badge" [ngClass]="getStatusClass(req.status)">{{ req.status }}</span>
+            </div>
+            <div class="request-body">
+                <div class="info-row">
+                    <label>Week:</label>
+                    <span>{{ req.weekStart | date:'mediumDate' }}</span>
+                </div>
+                <div class="info-row">
+                    <label>Changes:</label>
+                    <span>{{ req.changes }}</span>
+                </div>
+                <div class="info-row">
+                    <label>Submitted:</label>
+                    <span>{{ req.submittedDate | date:'mediumDate' }}</span>
+                </div>
+            </div>
+            <div class="request-actions" *ngIf="req.status === 'pending'">
+                <button class="btn btn-success" (click)="approve(req)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Approve
+                </button>
+                <button class="btn btn-danger" (click)="reject(req)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                    Reject
+                </button>
+                <button class="btn btn-outline">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    View Details
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

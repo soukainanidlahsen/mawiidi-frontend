@@ -1,1 +1,174 @@
-<p>admin-dashboard works!</p>
+<div class="dashboard">
+    <header class="dashboard-header">
+        <div class="welcome">
+            <h1>Administration Dashboard</h1>
+            <p>{{ currentDate | date:'fullDate' }}</p>
+        </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon establishments">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
+                    <path d="M9 22v-4h6v4" />
+                    <path d="M8 6h.01" />
+                    <path d="M16 6h.01" />
+                    <path d="M12 6h.01" />
+                    <path d="M12 10h.01" />
+                    <path d="M12 14h.01" />
+                    <path d="M16 10h.01" />
+                    <path d="M16 14h.01" />
+                    <path d="M8 10h.01" />
+                    <path d="M8 14h.01" />
+                </svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">{{ stats.totalEstablishments }}</span>
+                <span class="stat-label">Establishments</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon doctors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                    <path d="M12 14v7" />
+                    <path d="M9 18h6" />
+                </svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">{{ stats.totalDoctors }}</span>
+                <span class="stat-label">Doctors</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon patients">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">{{ stats.totalPatients | number }}</span>
+                <span class="stat-label">Patients</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon appointments">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                    <line x1="16" x2="16" y1="2" y2="6" />
+                    <line x1="8" x2="8" y1="2" y2="6" />
+                    <line x1="3" x2="21" y1="10" y2="10" />
+                </svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">{{ stats.todayAppointments }}</span>
+                <span class="stat-label">Today's Appointments</span>
+            </div>
+        </div>
+        <div class="stat-card highlight">
+            <div class="stat-icon pending">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                </svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">{{ stats.pendingPlannings }}</span>
+                <span class="stat-label">Pending Plannings</span>
+            </div>
+            <a routerLink="/admin/planning" class="card-link">Review</a>
+        </div>
+        <div class="stat-card highlight">
+            <div class="stat-icon complaints">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" x2="8" y1="13" y2="13" />
+                    <line x1="16" x2="8" y1="17" y2="17" />
+                </svg>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">{{ stats.openComplaints }}</span>
+                <span class="stat-label">Open Complaints</span>
+            </div>
+            <a routerLink="/admin/complaints" class="card-link">View</a>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="content-section">
+        <div class="section-header">
+            <h2>Recent Activity</h2>
+        </div>
+        <div class="activity-list">
+            <div class="activity-item" *ngFor="let activity of recentActivities">
+                <div class="activity-icon" [innerHTML]="getActivityIcon(activity.type)"></div>
+                <div class="activity-content">
+                    <p class="message">{{ activity.message }}</p>
+                    <span class="time">{{ activity.time | date:'short' }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+        <h3>Quick Actions</h3>
+        <div class="actions-grid">
+            <a routerLink="/admin/structures" class="action-btn">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
+                        <path d="M9 22v-4h6v4" />
+                        <path d="M8 6h.01" />
+                        <path d="M16 6h.01" />
+                    </svg>
+                </span>
+                <span>Add Establishment</span>
+            </a>
+            <a routerLink="/admin/planning" class="action-btn">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                </span>
+                <span>Validate Planning</span>
+            </a>
+            <a routerLink="/admin/complaints" class="action-btn">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                </span>
+                <span>Manage Complaints</span>
+            </a>
+            <a routerLink="/admin/settings" class="action-btn">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                    </svg>
+                </span>
+                <span>System Settings</span>
+            </a>
+        </div>
+    </div>
+</div>

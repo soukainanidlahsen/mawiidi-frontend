@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
 
 interface MedicalRecord {
   id: number;
@@ -13,7 +14,7 @@ interface MedicalRecord {
 @Component({
   selector: 'app-medical-record',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './medical-record.component.html',
   styleUrl: './medical-record.component.scss'
 })

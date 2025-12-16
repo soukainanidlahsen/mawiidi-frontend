@@ -1,0 +1,259 @@
+// Variables - Doctor theme
+$primary-color: #0c8599;
+$primary-dark: #0b7285;
+$secondary-color: #20c997;
+$accent-color: #e3fafc;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+$font-family: 'Inter', sans-serif;
+
+.dashboard {
+    font-family: $font-family;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .welcome {
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: $text-color;
+            margin: 0 0 0.25rem 0;
+        }
+
+        p {
+            color: $light-text;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+
+        &.btn-primary {
+            background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+            color: $white;
+            box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba($primary-color, 0.4);
+            }
+        }
+    }
+}
+
+// Stats Grid
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: $white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .stat-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.appointments {
+            background: rgba($primary-color, 0.1);
+            color: $primary-color;
+        }
+
+        &.pending {
+            background: rgba(#f59f00, 0.1);
+            color: #f59f00;
+        }
+
+        &.patients {
+            background: rgba($secondary-color, 0.1);
+            color: $secondary-color;
+        }
+
+        &.messages {
+            background: rgba(#7c3aed, 0.1);
+            color: #7c3aed;
+        }
+    }
+
+    .stat-info {
+        display: flex;
+        flex-direction: column;
+
+        .stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: $text-color;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: $light-text;
+        }
+    }
+}
+
+// Content Section
+.content-section {
+    background: $white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: $text-color;
+            margin: 0;
+        }
+
+        .view-all {
+            color: $primary-color;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+// Appointments List
+.appointments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.appointment-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: $background-color;
+    border-radius: 12px;
+    transition: all 0.3s;
+
+    &:hover {
+        background: $accent-color;
+    }
+
+    .time-slot {
+        min-width: 70px;
+
+        .time {
+            font-weight: 600;
+            color: $text-color;
+            font-size: 1rem;
+        }
+    }
+
+    .patient-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin-left: 1rem;
+
+        .patient-name {
+            font-weight: 600;
+            color: $text-color;
+            font-size: 0.95rem;
+        }
+
+        .appointment-type {
+            font-size: 0.85rem;
+            color: $light-text;
+        }
+    }
+
+    .appointment-status {
+        padding: 0.35rem 0.85rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        margin-right: 1rem;
+
+        &.status-confirmed {
+            background: rgba($secondary-color, 0.15);
+            color: darken($secondary-color, 10%);
+        }
+
+        &.status-pending {
+            background: rgba(#f59f00, 0.15);
+            color: darken(#f59f00, 10%);
+        }
+
+        &.status-completed {
+            background: rgba($light-text, 0.15);
+            color: $light-text;
+        }
+    }
+
+    .appointment-actions {
+        display: flex;
+        gap: 0.5rem;
+
+        .btn-icon {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: $white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: $light-text;
+            transition: all 0.3s;
+
+            &:hover {
+                background: $primary-color;
+                color: $white;
+            }
+        }
+    }
+}
