@@ -1,0 +1,48 @@
+<div class="ai-assistant-container">
+    <!-- Floating Button -->
+    <button class="chat-toggle-btn" (click)="toggleChat()" [class.open]="isOpen">
+        <svg *ngIf="!isOpen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+        </svg>
+        <svg *ngIf="isOpen" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" x2="6" y1="6" y2="18" />
+            <line x1="6" x2="18" y1="6" y2="18" />
+        </svg>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="chat-window" *ngIf="isOpen">
+        <div class="chat-header">
+            <h3>Mawiidi AI Assistant</h3>
+            <span class="status-dot"></span>
+        </div>
+
+        <div class="chat-messages" #scrollContainer>
+            <div class="message" *ngFor="let msg of messages" [class.user]="msg.sender === 'user'"
+                [class.ai]="msg.sender === 'ai'">
+                <div class="bubble">
+                    {{ msg.text }}
+                </div>
+                <span class="time">{{ msg.timestamp | date:'shortTime' }}</span>
+            </div>
+
+            <div class="typing-indicator" *ngIf="isTyping">
+                <span>.</span><span>.</span><span>.</span>
+            </div>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()"
+                placeholder="Type your question..." [disabled]="isTyping">
+            <button (click)="sendMessage()" [disabled]="!newMessage.trim() || isTyping">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" x2="11" y1="2" y2="13" />
+                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>

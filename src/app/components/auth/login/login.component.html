@@ -1,0 +1,66 @@
+<div class="login-container" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+  <!-- Left Branding Side -->
+  <div class="login-branding">
+    <div class="branding-content">
+      <h1>Mawiidi 2</h1>
+      <p>{{ 'landing.slogan' | translate }}</p>
+    </div>
+    <div class="branding-image">
+      <img src="assets/login-image.png" alt="Medical Team">
+    </div>
+  </div>
+
+  <!-- Right Form Side -->
+  <div class="login-form-section">
+    <div class="login-card">
+      <div class="top-actions">
+        <a routerLink="/" class="back-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6" />
+          </svg>
+          {{ 'common.back' | translate }}
+        </a>
+        <div class="lang-switcher">
+          <button [class.active]="currentLang === 'ar'" (click)="switchLang('ar')">AR</button>
+          <button [class.active]="currentLang === 'fr'" (click)="switchLang('fr')">FR</button>
+          <button [class.active]="currentLang === 'en'" (click)="switchLang('en')">EN</button>
+        </div>
+      </div>
+
+      <div class="logo-container">
+        <img src="assets/logo.png" alt="Mawiidi Logo" class="logo">
+      </div>
+
+      <h2>{{ 'login.welcome' | translate }}</h2>
+      <p class="subtitle">{{ 'login.subtitle' | translate }}</p>
+
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="form-group">
+          <label for="email">{{ 'login.email' | translate }}</label>
+          <input type="email" id="email" name="email" [(ngModel)]="loginRequest.email" required email
+            placeholder="patient&#64;mawiidi.com" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="password">{{ 'login.password' | translate }}</label>
+          <input type="password" id="password" name="password" [(ngModel)]="loginRequest.password" required
+            placeholder="••••••••" class="form-control">
+        </div>
+
+        <div class="error-message" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.form.valid || isLoading">
+          <span *ngIf="!isLoading">{{ 'login.signin' | translate }}</span>
+          <span *ngIf="isLoading">...</span>
+        </button>
+
+        <div class="footer-links">
+          <p>{{ 'login.no_account' | translate }} <a routerLink="/register">{{ 'login.register' | translate }}</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

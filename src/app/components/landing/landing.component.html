@@ -1,0 +1,207 @@
+<div class="landing-page" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Mawiidi 2 Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>Mawiidi 2</h1>
+                    <span class="slogan">{{ 'landing.slogan' | translate }}</span>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <ul>
+                    <li><a routerLink="/" fragment="home" class="active">{{ 'landing.nav.home' | translate }}</a></li>
+                    <li><a routerLink="/" fragment="about">{{ 'landing.nav.about' | translate }}</a></li>
+                    <li><a routerLink="/" fragment="departments">{{ 'landing.nav.services' | translate }}</a></li>
+                    <li><a routerLink="/" fragment="doctors">{{ 'landing.nav.doctors' | translate }}</a></li>
+                    <li><a routerLink="/" fragment="contact">{{ 'landing.nav.contact' | translate }}</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="lang-switcher">
+                    <button [class.active]="currentLang === 'ar'" (click)="switchLang('ar')">AR</button>
+                    <span class="sep">|</span>
+                    <button [class.active]="currentLang === 'fr'" (click)="switchLang('fr')">FR</button>
+                    <span class="sep">|</span>
+                    <button [class.active]="currentLang === 'en'" (click)="switchLang('en')">EN</button>
+                </div>
+                <a routerLink="/login" class="btn btn-primary">{{ 'landing.login' | translate }}</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-tag">{{ 'landing.hero.tag' | translate }}</span>
+                <h1 class="hero-title">{{ 'landing.hero.title' | translate }}</h1>
+                <p class="hero-subtitle">{{ 'landing.hero.subtitle' | translate }}</p>
+                <div class="hero-buttons">
+                    <a routerLink="/login" class="btn btn-white">{{ 'landing.hero.book' | translate }}</a>
+                    <a routerLink="/register" class="btn btn-outline-white">{{ 'landing.hero.register' | translate
+                        }}</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <img src="assets/about-doctor.png" alt="Doctor" class="doctor-img">
+                    <div class="circle-bg"></div>
+                </div>
+            </div>
+        </div>
+        <div class="wave-shape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1"
+                    d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments" id="departments">
+        <div class="container">
+            <div class="section-header">
+                <h2>{{ 'landing.departments.title' | translate }}</h2>
+                <p>{{ 'landing.departments.subtitle' | translate }}</p>
+            </div>
+            <div class="department-grid">
+                <div class="dept-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                        </svg>
+                    </div>
+                    <h3>{{ 'landing.dept.cardiology' | translate }}</h3>
+                    <p>{{ 'landing.dept.cardiology_desc' | translate }}</p>
+                </div>
+                <div class="dept-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 8v8" />
+                            <path d="M8 12h8" />
+                        </svg>
+                    </div>
+                    <h3>{{ 'landing.dept.neurology' | translate }}</h3>
+                    <p>{{ 'landing.dept.neurology_desc' | translate }}</p>
+                </div>
+                <div class="dept-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12h.01" />
+                            <path d="M15 12h.01" />
+                            <path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5" />
+                            <path
+                                d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1" />
+                        </svg>
+                    </div>
+                    <h3>{{ 'landing.dept.pediatrics' | translate }}</h3>
+                    <p>{{ 'landing.dept.pediatrics_desc' | translate }}</p>
+                </div>
+                <div class="dept-card">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5.5c1.5-2 4.5-2 6 0s1.5 5-3 9.5c-4.5-4.5-4.5-8-3-9.5z" />
+                            <path d="M12 5.5c-1.5-2-4.5-2-6 0s-1.5 5 3 9.5" />
+                            <path d="M8 14l4 4 4-4" />
+                        </svg>
+                    </div>
+                    <h3>{{ 'landing.dept.dental' | translate }}</h3>
+                    <p>{{ 'landing.dept.dental_desc' | translate }}</p>
+                </div>
+            </div>
+            <div class="center-btn">
+                <a routerLink="/" class="btn btn-secondary">{{ 'landing.departments.view_all' | translate }}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2>{{ 'landing.about.title' | translate }}</h2>
+                <p>{{ 'landing.about.desc' | translate }}</p>
+                <ul class="features-list">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {{ 'landing.about.f1' | translate }}
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {{ 'landing.about.f2' | translate }}
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        {{ 'landing.about.f3' | translate }}
+                    </li>
+                </ul>
+                <a routerLink="/about" class="btn btn-primary">{{ 'landing.about.more' | translate }}</a>
+            </div>
+            <div class="about-image">
+                <img src="assets/hero-doctor.png" alt="About Mawiidi">
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="doctors" id="doctors">
+        <div class="container">
+            <div class="section-header">
+                <h2>{{ 'landing.nav.doctors' | translate }}</h2>
+                <p>{{ 'landing.doctors.subtitle' | translate }}</p>
+            </div>
+            <!-- Doctor cards would go here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-col">
+                <h3>Mawiidi 2</h3>
+                <p>{{ 'landing.footer.desc' | translate }}</p>
+            </div>
+            <div class="footer-col">
+                <h3>{{ 'landing.footer.links' | translate }}</h3>
+                <ul>
+                    <li><a routerLink="/">{{ 'landing.nav.home' | translate }}</a></li>
+                    <li><a routerLink="/">{{ 'landing.nav.services' | translate }}</a></li>
+                    <li><a routerLink="/">{{ 'landing.nav.contact' | translate }}</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>{{ 'landing.footer.contact' | translate }}</h3>
+                <p>Email: contact&#64;mawiidi.ma</p>
+                <p>Tel: 05 22 00 00 00</p>
+            </div>
+            <div class="footer-col">
+                <h3>{{ 'landing.footer.newsletter' | translate }}</h3>
+                <input type="email" placeholder="Email">
+                <button class="btn btn-primary">{{ 'landing.footer.subscribe' | translate }}</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ currentYear }} Mawiidi 2. {{ 'landing.footer.rights' | translate }}</p>
+        </div>
+    </footer>
+</div>

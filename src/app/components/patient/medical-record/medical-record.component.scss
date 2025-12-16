@@ -1,0 +1,130 @@
+// Variables matching landing page
+$primary-color: #20c997;
+$primary-dark: #0ca678;
+$secondary-color: #0c8599;
+$accent-color: #e6fcf5;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+$font-family: 'Inter', sans-serif;
+
+.records-container {
+    h2 {
+        color: $primary-dark;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.records-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.record-card {
+    background: $white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid #e9ecef;
+
+        h3 {
+            font-size: 1.1rem;
+            margin: 0;
+            color: $text-color;
+            font-weight: 600;
+        }
+
+        .badge {
+            background-color: $accent-color;
+            color: $primary-dark;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+    }
+
+    .card-body {
+        p {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            color: $light-text;
+            display: flex;
+            gap: 0.5rem;
+
+            strong {
+                color: $text-color;
+                font-weight: 600;
+                min-width: 100px;
+            }
+        }
+    }
+
+    .card-footer {
+        margin-top: 1.25rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: $font-family;
+
+    &.btn-primary {
+        background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+        color: $white;
+        box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba($primary-color, 0.4);
+        }
+    }
+
+    &.btn-outline {
+        background: transparent;
+        border: 2px solid $primary-color;
+        color: $primary-color;
+
+        &:hover {
+            background: $accent-color;
+        }
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: $white;
+    border-radius: 16px;
+    color: $light-text;
+    font-size: 1rem;
+}

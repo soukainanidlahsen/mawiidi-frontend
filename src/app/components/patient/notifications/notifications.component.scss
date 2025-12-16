@@ -1,0 +1,139 @@
+// Variables matching landing page
+$primary-color: #20c997;
+$primary-dark: #0ca678;
+$success-color: #28a745;
+$info-color: #17a2b8;
+$accent-color: #e6fcf5;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+$font-family: 'Inter', sans-serif;
+
+.notifications-container {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h2 {
+        color: $primary-dark;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.notification-card {
+    display: flex;
+    align-items: flex-start;
+    background: $white;
+    padding: 1.5rem;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid transparent;
+    transition: all 0.3s;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    &.unread {
+        background-color: $accent-color;
+        border-left-color: $primary-color;
+    }
+
+    &.success {
+        border-left-color: $success-color;
+    }
+
+    &.info {
+        border-left-color: $info-color;
+    }
+
+    .icon-area {
+        width: 45px;
+        height: 45px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        background: $accent-color;
+        color: $primary-dark;
+
+        svg {
+            width: 22px;
+            height: 22px;
+        }
+    }
+
+    .content {
+        flex: 1;
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+
+            h3 {
+                margin: 0;
+                font-size: 1.05rem;
+                color: $text-color;
+                font-weight: 600;
+            }
+
+            .date {
+                font-size: 0.8rem;
+                color: $light-text;
+            }
+        }
+
+        p {
+            margin: 0;
+            color: $light-text;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-left: 1rem;
+
+        .btn-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            color: $light-text;
+            transition: all 0.3s;
+
+            &:hover {
+                background: $background-color;
+                color: $primary-color;
+            }
+
+            &.delete:hover {
+                color: #dc3545;
+            }
+        }
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    background: $white;
+    border-radius: 16px;
+    color: $light-text;
+    font-size: 1rem;
+}

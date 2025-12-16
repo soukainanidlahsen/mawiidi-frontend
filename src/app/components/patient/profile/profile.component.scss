@@ -1,0 +1,157 @@
+// Variables matching landing page
+$primary-color: #20c997;
+$primary-dark: #0ca678;
+$accent-color: #e6fcf5;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+$font-family: 'Inter', sans-serif;
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h2 {
+        color: $primary-dark;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.profile-card {
+    background: $white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+
+    .avatar {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+        color: $white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        box-shadow: 0 6px 20px rgba($primary-color, 0.3);
+    }
+
+    h3 {
+        margin: 0;
+        color: $text-color;
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+
+    .role {
+        color: $light-text;
+        margin-top: 0.3rem;
+        font-size: 0.95rem;
+    }
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 600px) {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+}
+
+.form-group {
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: $text-color;
+        font-size: 0.95rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.85rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-family: $font-family;
+        transition: all 0.3s;
+        background: $background-color;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-color;
+            background: $white;
+            box-shadow: 0 0 0 4px rgba($primary-color, 0.1);
+        }
+
+        &:disabled {
+            background-color: #f1f3f5;
+            cursor: not-allowed;
+            color: $light-text;
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: $font-family;
+
+    &.btn-primary {
+        background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+        color: $white;
+        box-shadow: 0 4px 15px rgba($primary-color, 0.3);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba($primary-color, 0.4);
+        }
+    }
+
+    &.btn-outline {
+        background: transparent;
+        border: 2px solid #dee2e6;
+        color: $light-text;
+
+        &:hover {
+            border-color: $primary-color;
+            color: $primary-color;
+            background: $accent-color;
+        }
+    }
+}

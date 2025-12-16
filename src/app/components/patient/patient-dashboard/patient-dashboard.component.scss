@@ -1,0 +1,380 @@
+// Variables matching landing page
+$primary-color: #20c997;
+$primary-dark: #0ca678;
+$secondary-color: #0c8599;
+$accent-color: #e6fcf5;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$background-color: #f8f9fa;
+$font-family: 'Inter', sans-serif;
+
+.dashboard-content {
+    font-family: $font-family;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+
+    .welcome-section {
+        h1 {
+            margin: 0 0 0.25rem;
+            color: $primary-dark;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            margin: 0;
+            color: $light-text;
+            font-size: 1rem;
+        }
+    }
+
+    .date-section {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $light-text;
+        font-size: 0.95rem;
+        background: $white;
+        padding: 0.6rem 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+        svg {
+            color: $primary-color;
+        }
+    }
+}
+
+// Stats Row
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: $white;
+    padding: 1.25rem 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .stat-icon {
+        width: 55px;
+        height: 55px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.appointments {
+            background: linear-gradient(135deg, rgba($primary-color, 0.15) 0%, rgba($primary-dark, 0.15) 100%);
+            color: $primary-dark;
+        }
+
+        &.records {
+            background: linear-gradient(135deg, rgba(#0c8599, 0.15) 0%, rgba(#0c8599, 0.25) 100%);
+            color: #0c8599;
+        }
+
+        &.messages {
+            background: linear-gradient(135deg, rgba(#f59f00, 0.15) 0%, rgba(#f59f00, 0.25) 100%);
+            color: #f59f00;
+        }
+    }
+
+    .stat-info {
+        display: flex;
+        flex-direction: column;
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: $text-color;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: $light-text;
+            margin-top: 0.25rem;
+        }
+    }
+}
+
+// Dashboard Grid
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 1.5rem;
+
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: $white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.25rem;
+
+        h2 {
+            font-size: 1.15rem;
+            color: $text-color;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .view-all {
+            font-size: 0.9rem;
+            color: $primary-color;
+            text-decoration: none;
+            font-weight: 500;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+// Quick Actions
+.quick-actions {
+    .action-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .action-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1.25rem;
+        background: $background-color;
+        border-radius: 14px;
+        text-decoration: none;
+        transition: all 0.3s;
+        cursor: pointer;
+
+        &:hover {
+            background: $accent-color;
+            transform: translateY(-2px);
+
+            .action-icon {
+                background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+                color: $white;
+            }
+        }
+
+        .action-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $primary-color;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: $text-color;
+            text-align: center;
+        }
+    }
+}
+
+// Appointments
+.upcoming-appointments {
+    .loading {
+        text-align: center;
+        padding: 2rem;
+        color: $light-text;
+    }
+
+    .empty-state {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2.5rem 1rem;
+        color: $light-text;
+        text-align: center;
+
+        svg {
+            opacity: 0.4;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 0 0 1rem;
+        }
+    }
+}
+
+.appointment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.appointment-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: $background-color;
+    border-radius: 14px;
+    gap: 1rem;
+    transition: all 0.3s;
+
+    &:hover {
+        background: $accent-color;
+    }
+
+    .apt-date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: $white;
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        min-width: 65px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+        .day {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: $primary-dark;
+            line-height: 1;
+        }
+
+        .month {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: $light-text;
+            font-weight: 600;
+            margin-top: 0.2rem;
+        }
+    }
+
+    .apt-details {
+        flex: 1;
+
+        h3 {
+            font-size: 1rem;
+            margin: 0 0 0.35rem;
+            color: $text-color;
+            font-weight: 600;
+        }
+
+        .time {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            color: $light-text;
+            margin: 0 0 0.35rem;
+
+            svg {
+                color: $primary-color;
+            }
+        }
+
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+
+            &.confirmed {
+                background: rgba(#28a745, 0.1);
+                color: #28a745;
+            }
+
+            &.pending {
+                background: rgba(#ffc107, 0.15);
+                color: darken(#ffc107, 15%);
+            }
+
+            &.cancelled {
+                background: rgba(#dc3545, 0.1);
+                color: #dc3545;
+            }
+        }
+    }
+}
+
+// Buttons
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: $font-family;
+
+    &.btn-primary {
+        background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+        color: $white;
+        box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba($primary-color, 0.4);
+        }
+    }
+
+    &.btn-outline {
+        background: transparent;
+        border: 2px solid $primary-color;
+        color: $primary-color;
+
+        &:hover {
+            background: $accent-color;
+        }
+    }
+
+    &.btn-sm {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}

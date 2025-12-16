@@ -1,0 +1,77 @@
+<div class="register-container" [dir]="currentLang === 'ar' ? 'rtl' : 'ltr'">
+    <div class="register-card">
+        <div class="top-actions">
+            <a routerLink="/" class="back-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6" />
+                </svg>
+                {{ 'common.back' | translate }}
+            </a>
+            <div class="lang-switcher">
+                <button [class.active]="currentLang === 'ar'" (click)="switchLang('ar')">AR</button>
+                <button [class.active]="currentLang === 'fr'" (click)="switchLang('fr')">FR</button>
+                <button [class.active]="currentLang === 'en'" (click)="switchLang('en')">EN</button>
+            </div>
+        </div>
+
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="Mawiidi Logo" class="logo">
+        </div>
+        <h2>{{ 'register.title' | translate }}</h2>
+        <p class="subtitle">{{ 'register.subtitle' | translate }}</p>
+
+        <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="firstName">{{ 'register.firstName' | translate }}</label>
+                        <input type="text" id="firstName" name="firstName" [(ngModel)]="registerRequest.firstName"
+                            required [placeholder]="'register.firstName' | translate" class="form-control">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="lastName">{{ 'register.lastName' | translate }}</label>
+                        <input type="text" id="lastName" name="lastName" [(ngModel)]="registerRequest.lastName" required
+                            [placeholder]="'register.lastName' | translate" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">{{ 'register.email' | translate }}</label>
+                <input type="email" id="email" name="email" [(ngModel)]="registerRequest.email" required email
+                    placeholder="patient&#64;mawiidi.com" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="password">{{ 'register.password' | translate }}</label>
+                <input type="password" id="password" name="password" [(ngModel)]="registerRequest.password" required
+                    minlength="6" placeholder="••••••••" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="role">{{ 'register.role' | translate }}</label>
+                <select id="role" name="role" [(ngModel)]="registerRequest.role" required class="form-control">
+                    <option value="PATIENT">{{ 'register.patient' | translate }}</option>
+                    <option value="DOCTOR">{{ 'register.doctor' | translate }}</option>
+                </select>
+            </div>
+
+            <div class="error-message" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="!registerForm.form.valid || isLoading">
+                <span *ngIf="!isLoading">{{ 'register.submit' | translate }}</span>
+                <span *ngIf="isLoading">{{ 'register.loading' | translate }}</span>
+            </button>
+
+            <div class="footer-links">
+                <p>{{ 'register.hasAccount' | translate }} <a routerLink="/login">{{ 'register.signin' | translate
+                        }}</a></p>
+            </div>
+        </form>
+    </div>
+</div>

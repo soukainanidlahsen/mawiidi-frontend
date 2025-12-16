@@ -1,0 +1,304 @@
+// Variables matching landing page
+$primary-color: #20c997;
+$primary-dark: #0ca678;
+$secondary-color: #0c8599;
+$accent-color: #e6fcf5;
+$text-color: #343a40;
+$light-text: #868e96;
+$white: #ffffff;
+$font-family: 'Inter', sans-serif;
+
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: $font-family;
+}
+
+// Left side - Image/Branding
+.login-branding {
+    flex: 1;
+    background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50%;
+    }
+
+    .branding-content {
+        text-align: center;
+        color: $white;
+        z-index: 1;
+
+        .logo-large {
+            width: 120px;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: brightness(0) invert(1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 350px;
+            line-height: 1.6;
+        }
+    }
+
+    .branding-image {
+        margin-top: 3rem;
+        z-index: 1;
+
+        img {
+            max-width: 350px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+    }
+}
+
+// Right side - Form
+.login-form-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    background-color: $white;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+
+    .top-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .back-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        color: $light-text;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.3s;
+
+        &:hover {
+            color: $primary-color;
+        }
+
+        svg {
+            flex-shrink: 0;
+        }
+    }
+
+    .lang-switcher {
+        display: flex;
+        gap: 0.5rem;
+
+        button {
+            background: none;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: $light-text;
+            transition: all 0.3s;
+
+            &:hover,
+            &.active {
+                border-color: $primary-color;
+                color: $primary-color;
+                background-color: $accent-color;
+            }
+        }
+    }
+
+    .logo-container {
+        margin-bottom: 2rem;
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+    }
+
+    h2 {
+        color: $text-color;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+        color: $light-text;
+        margin-bottom: 2.5rem;
+        font-size: 1rem;
+    }
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: $text-color;
+        font-size: 0.95rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.9rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-family: $font-family;
+        transition: all 0.3s;
+        background-color: #f8f9fa;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-color;
+            background-color: $white;
+            box-shadow: 0 0 0 4px rgba($primary-color, 0.1);
+        }
+
+        &::placeholder {
+            color: #adb5bd;
+        }
+    }
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: $font-family;
+
+    &.btn-primary {
+        background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+        color: $white;
+        box-shadow: 0 4px 15px rgba($primary-color, 0.3);
+
+        &:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba($primary-color, 0.4);
+        }
+
+        &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    }
+
+    &.btn-block {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
+.error-message {
+    color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.1);
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+.footer-links {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: $light-text;
+
+    a {
+        color: $primary-color;
+        text-decoration: none;
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 992px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .login-branding {
+        padding: 2rem;
+        min-height: 300px;
+
+        .branding-content {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+
+        .branding-image {
+            display: none;
+        }
+    }
+
+    .login-form-section {
+        padding: 2rem;
+    }
+}
+
+// RTL Support
+[dir="rtl"] {
+    .login-card {
+        .lang-switcher {
+            right: auto;
+            left: 0;
+        }
+    }
+
+    .form-group {
+        text-align: right;
+    }
+}

@@ -1,0 +1,66 @@
+<div class="messaging-container">
+    <!-- Conversations List -->
+    <div class="conversations-panel" [class.hidden-mobile]="selectedConversation">
+        <div class="panel-header">
+            <h2>Messages</h2>
+        </div>
+        <div class="conversations-list">
+            <div class="conversation-item" *ngFor="let conv of conversations"
+                [class.active]="selectedConversation?.id === conv.id" [class.unread]="conv.unread"
+                (click)="selectConversation(conv)">
+                <div class="avatar">{{ conv.doctorName.charAt(4) }}</div>
+                <div class="conv-info">
+                    <h4>{{ conv.doctorName }}</h4>
+                    <p class="specialty">{{ conv.specialty }}</p>
+                    <p class="last-message">{{ conv.lastMessage }}</p>
+                </div>
+                <div class="unread-dot" *ngIf="conv.unread"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Panel -->
+    <div class="chat-panel" [class.hidden-mobile]="!selectedConversation">
+        <div class="empty-chat" *ngIf="!selectedConversation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+            <p>Select a conversation to start messaging</p>
+        </div>
+
+        <ng-container *ngIf="selectedConversation">
+            <div class="chat-header">
+                <button class="back-btn" (click)="backToList()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="m15 18-6-6 6-6" />
+                    </svg>
+                </button>
+                <div class="doctor-info">
+                    <h3>{{ selectedConversation.doctorName }}</h3>
+                    <span>{{ selectedConversation.specialty }}</span>
+                </div>
+            </div>
+
+            <div class="messages-area">
+                <div class="message" *ngFor="let msg of selectedConversation.messages" [ngClass]="msg.sender">
+                    <div class="bubble">{{ msg.text }}</div>
+                    <span class="time">{{ msg.timestamp | date:'shortTime' }}</span>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" [(ngModel)]="newMessage" placeholder="Type a message..."
+                    (keyup.enter)="sendMessage()">
+                <button (click)="sendMessage()" [disabled]="!newMessage.trim()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <line x1="22" x2="11" y1="2" y2="13" />
+                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                </button>
+            </div>
+        </ng-container>
+    </div>
+</div>
